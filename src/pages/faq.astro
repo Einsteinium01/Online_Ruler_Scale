@@ -1,0 +1,17 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import Faq from '../components/marketing/Faq.astro';
+import { FAQ_ITEMS } from '../lib/content/faq';
+
+const title = 'FAQ';
+const description = 'Answers to common questions about calibration, accuracy, and privacy on Online Ruler Scale.';
+---
+
+<PageLayout title={title} description={description} path="/faq/">
+	<div class="mx-auto max-w-2xl">
+		<h1 class="text-display-lg font-medium tracking-display-sm text-ink">Frequently asked questions</h1>
+		<div class="mt-8">
+			<Faq items={FAQ_ITEMS} />
+		</div>
+	</div>
+</PageLayout>

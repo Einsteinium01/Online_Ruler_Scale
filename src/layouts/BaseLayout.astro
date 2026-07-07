@@ -1,0 +1,75 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+	description: string;
+	path?: string;
+}
+
+const { title, description, path = '/' } = Astro.props;
+const siteName = 'Online Ruler Scale';
+const canonicalURL = new URL(path, Astro.site);
+const ogImageURL = new URL('/web-app-manifest-512x512.png', Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script is:inline>
+			(function () {
+				try {
+					var stored = localStorage.getItem('theme');
+					var dark = stored ? stored === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+					document.documentElement.classList.toggle('dark', dark);
+				} catch (e) {}
+			})();
+		</script>
+
+		<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+		<meta name="apple-mobile-web-app-title" content="Ruler Scale" />
+		<link rel="manifest" href="/site.webmanifest" />
+
+		<title>{title} | {siteName}</title>
+		<meta name="description" content={description} />
+		<link rel="canonical" href={canonicalURL} />
+
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content={siteName} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:image" content={ogImageURL} />
+
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImageURL} />
+
+		<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
+		<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0a0a0a" />
+
+		<script
+			type="application/ld+json"
+			set:html={JSON.stringify({
+				'@context': 'https://schema.org',
+				'@type': 'WebApplication',
+				name: siteName,
+				url: Astro.site,
+				applicationCategory: 'UtilitiesApplication',
+				operatingSystem: 'Any',
+				offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+				description:
+					'A free, calibrated on-screen ruler. Measure real-world objects to actual size in inches, centimeters, and millimeters directly in your browser.',
+			})}
+		/>
+	</head>
+	<body class="bg-canvas-soft text-ink">
+		<slot />
+	</body>
+</html>

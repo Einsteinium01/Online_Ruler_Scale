@@ -1,0 +1,36 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+
+const title = 'Privacy';
+const description = 'Online Ruler Scale collects no accounts, no analytics, and no measurement data.';
+---
+
+<PageLayout title={title} description={description} path="/privacy/">
+	<div class="mx-auto max-w-2xl">
+		<h1 class="text-display-lg font-medium tracking-display-sm text-ink">Privacy</h1>
+
+		<div class="mt-8 space-y-6 text-body-md text-body">
+			<p>Online Ruler Scale is designed to collect as little as possible. In short:</p>
+			<ul class="list-disc space-y-2 pl-5">
+				<li>No accounts or sign-in are required or offered.</li>
+				<li>No analytics, tracking scripts, or third-party cookies are loaded.</li>
+				<li>Measurements you take are never transmitted anywhere — the entire tool runs client-side.</li>
+				<li>
+					The only data stored is your screen calibration (a pixels-per-inch value and the method used),
+					saved in your browser's <code class="rounded bg-canvas-soft-2 px-1 py-0.5 font-mono text-code">localStorage</code>
+					 so you don't have to recalibrate on every visit. This never leaves your device unless you
+					explicitly copy a shareable calibration link.
+				</li>
+				<li>Clearing your browser's site data for this domain removes everything we've stored.</li>
+			</ul>
+			<p>
+				Our hosting provider may log standard, anonymized web server request data (such as IP address and
+				user agent) for security and reliability purposes, as is typical for any website. We do not use
+				this data for tracking or analytics.
+			</p>
+			<p>
+				If anything here changes as the product evolves, this page will be updated to reflect it.
+			</p>
+		</div>
+	</div>
+</PageLayout>

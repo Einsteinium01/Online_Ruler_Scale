@@ -1,0 +1,48 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+
+const links = [
+	{ href: '/about/', label: 'About' },
+	{ href: '/faq/', label: 'FAQ' },
+	{ href: '/privacy/', label: 'Privacy' },
+];
+const current = Astro.url.pathname;
+---
+
+<header
+	class="sticky top-0 z-40 flex h-16 items-center justify-between border-b border-hairline bg-canvas px-4 md:px-6"
+>
+	<a href="/" class="flex items-center gap-2 text-body-sm font-medium text-ink">
+		<svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+			<rect x="1.5" y="6" width="17" height="8" rx="1.5" stroke="currentColor" stroke-width="1.5" />
+			<path d="M4 6v3M7 6v2M10 6v3M13 6v2M16 6v3" stroke="currentColor" stroke-width="1.5" />
+		</svg>
+		<span>Online Ruler Scale</span>
+	</a>
+
+	<nav class="hidden items-center gap-1 md:flex">
+		{
+			links.map((link) => (
+				<a
+					href={link.href}
+					class:list={[
+						'rounded-full px-3 py-2 text-body-sm text-body transition-colors hover:bg-canvas-soft hover:text-ink',
+						current === link.href && 'bg-canvas-soft text-ink',
+					]}
+				>
+					{link.label}
+				</a>
+			))
+		}
+	</nav>
+
+	<div class="flex items-center gap-2">
+		<ThemeToggle />
+		<a
+			href="/#ruler"
+			class="rounded-sm bg-ink px-3 py-1 text-body-sm font-medium text-on-primary transition-opacity hover:opacity-85"
+		>
+			Open Ruler
+		</a>
+	</div>
+</header>

@@ -1,0 +1,310 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Geist (Vercel's real typeface family) - weights 400/500/600 only, per DESIGN.md's "display ceiling" rule */
+@import '@fontsource/geist-sans/latin-400.css';
+@import '@fontsource/geist-sans/latin-500.css';
+@import '@fontsource/geist-sans/latin-600.css';
+@import '@fontsource/geist-mono/latin-400.css';
+@import '@fontsource/geist-mono/latin-500.css';
+
+/*
+  Token source: DESIGN.md ("Vercel-design-analysis").
+  Spacing is intentionally NOT re-themed: Tailwind's default 4px-based scale already
+  maps 1:1 onto DESIGN.md's spacing.* tokens (xxs=4=1, xs=8=2, sm=12=3, md=16=4,
+  lg=24=6, xl=32=8, 2xl=40=10, 3xl=48=12, 4xl=64=16, 5xl=96=24, 6xl=128=32, section=192=48).
+*/
+@theme {
+	--font-sans: 'Geist', 'Inter', system-ui, -apple-system, sans-serif;
+	--font-mono: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+
+	/* Brand & accent */
+	--color-ink: #171717;
+	--color-on-primary: #ffffff;
+	--color-body: #4d4d4d;
+	--color-mute: #888888;
+	--color-hairline: #ebebeb;
+	--color-hairline-strong: #a1a1a1;
+	--color-canvas: #ffffff;
+	--color-canvas-soft: #fafafa;
+	--color-canvas-soft-2: #f5f5f5;
+	--color-link: #0070f3;
+	--color-link-deep: #0761d1;
+	--color-link-bg-soft: #d3e5ff;
+	--color-success: #0070f3;
+	--color-error: #ee0000;
+	--color-error-soft: #f7d4d6;
+	--color-error-deep: #c50000;
+	--color-warning: #f5a623;
+	--color-warning-soft: #ffefcf;
+	--color-warning-deep: #ab570a;
+	--color-violet: #7928ca;
+	--color-cyan: #50e3c2;
+	--color-highlight-pink: #ff0080;
+	--color-gradient-develop-start: #007cf0;
+	--color-gradient-develop-end: #00dfd8;
+	--color-gradient-preview-start: #7928ca;
+	--color-gradient-preview-end: #ff0080;
+	--color-gradient-ship-start: #ff4d4d;
+	--color-gradient-ship-end: #f9cb28;
+
+	/* Radius scale */
+	--radius-xs: 4px;
+	--radius-sm: 6px;
+	--radius-md: 8px;
+	--radius-lg: 12px;
+	--radius-xl: 16px;
+	--radius-pill-sm: 64px;
+	--radius-pill: 100px;
+
+	/* Typography scale: size + paired line-height, tracking as separate tokens below */
+	--text-display-xl: 48px;
+	--text-display-xl--line-height: 48px;
+	--text-display-lg: 32px;
+	--text-display-lg--line-height: 40px;
+	--text-display-md: 24px;
+	--text-display-md--line-height: 32px;
+	--text-display-sm: 20px;
+	--text-display-sm--line-height: 28px;
+	--text-body-lg: 18px;
+	--text-body-lg--line-height: 28px;
+	--text-body-md: 16px;
+	--text-body-md--line-height: 24px;
+	--text-body-sm: 14px;
+	--text-body-sm--line-height: 20px;
+	--text-caption: 12px;
+	--text-caption--line-height: 16px;
+	--text-code: 13px;
+	--text-code--line-height: 20px;
+
+	--tracking-display-xl: -2.4px;
+	--tracking-display-lg: -1.28px;
+	--tracking-display-md: -0.96px;
+	--tracking-display-sm: -0.6px;
+	--tracking-body-sm: -0.28px;
+
+	/* Elevation - stacked shadows per DESIGN.md, inset hairline ring folded in */
+	--shadow-level-1: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+	--shadow-level-2:
+		0px 1px 1px rgba(0, 0, 0, 0.02), 0px 2px 2px rgba(0, 0, 0, 0.04), inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+	--shadow-level-3:
+		0px 2px 2px rgba(0, 0, 0, 0.04), 0px 8px 8px -8px rgba(0, 0, 0, 0.04),
+		inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+	--shadow-level-4:
+		0px 2px 2px rgba(0, 0, 0, 0.04), 0px 8px 16px -4px rgba(0, 0, 0, 0.04),
+		inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+	--shadow-level-5:
+		0px 1px 1px rgba(0, 0, 0, 0.02), 0px 8px 16px -4px rgba(0, 0, 0, 0.04),
+		0px 24px 32px -8px rgba(0, 0, 0, 0.06), inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+/*
+  Dark mode: Tailwind v4 utilities read colors from the CSS custom properties
+  registered above (e.g. `.bg-canvas { background-color: var(--color-canvas) }`),
+  so overriding the properties under `.dark` re-themes every utility that
+  already uses a semantic token - no `dark:` variant sprinkling required.
+*/
+:root.dark {
+	--color-ink: #ededed;
+	--color-on-primary: #0a0a0a;
+	--color-body: #b4b4b4;
+	--color-mute: #8a8a8a;
+	--color-hairline: #2e2e2e;
+	--color-hairline-strong: #454545;
+	--color-canvas: #0a0a0a;
+	--color-canvas-soft: #000000;
+	--color-canvas-soft-2: #161616;
+	--color-link: #3291ff;
+	--color-link-deep: #6cabff;
+	--color-link-bg-soft: #0f2d52;
+
+	/* Hairline-ring ("border") component of elevation must flip to a light ring on dark canvas. */
+	--shadow-level-1: inset 0 0 0 1px rgba(255, 255, 255, 0.145);
+	--shadow-level-2:
+		0px 1px 1px rgba(0, 0, 0, 0.2), 0px 2px 2px rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.145);
+	--shadow-level-3:
+		0px 2px 2px rgba(0, 0, 0, 0.2), 0px 8px 8px -8px rgba(0, 0, 0, 0.2),
+		inset 0 0 0 1px rgba(255, 255, 255, 0.145);
+	--shadow-level-4:
+		0px 2px 2px rgba(0, 0, 0, 0.2), 0px 8px 16px -4px rgba(0, 0, 0, 0.2),
+		inset 0 0 0 1px rgba(255, 255, 255, 0.145);
+	--shadow-level-5:
+		0px 1px 1px rgba(0, 0, 0, 0.2), 0px 8px 16px -4px rgba(0, 0, 0, 0.2),
+		0px 24px 32px -8px rgba(0, 0, 0, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.145);
+}
+
+@layer base {
+	html {
+		font-family: var(--font-sans);
+		background-color: var(--color-canvas-soft);
+		color: var(--color-ink);
+		-webkit-font-smoothing: antialiased;
+		color-scheme: light;
+	}
+
+	html.dark {
+		color-scheme: dark;
+	}
+
+	::selection {
+		background-color: var(--color-ink);
+		color: var(--color-canvas);
+	}
+}
+
+@utility container-page {
+	max-width: 1400px;
+	margin-inline: auto;
+	padding-inline: 16px;
+
+	@variant md {
+		padding-inline: 24px;
+	}
+}
+
+/*
+  Ruler tool component classes. These are stable, JS-driven primitives (render.ts / measure.ts
+  create elements with these exact class names), so they live here as a component API rather
+  than as inline Tailwind utilities per the tailwind-4-docs engineering playbook.
+*/
+@layer components {
+	.ruler-edge {
+		position: absolute;
+		z-index: 10;
+		overflow: hidden;
+		background-color: var(--color-canvas-soft-2);
+	}
+	.ruler-edge--top {
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 32px;
+		border-bottom: 1px solid var(--color-hairline-strong);
+	}
+	.ruler-edge--bottom {
+		bottom: 0;
+		left: 0;
+		right: 0;
+		height: 32px;
+		border-top: 1px solid var(--color-hairline-strong);
+	}
+	.ruler-edge--left {
+		top: 0;
+		bottom: 0;
+		left: 0;
+		width: 32px;
+		border-right: 1px solid var(--color-hairline-strong);
+	}
+	.ruler-edge--right {
+		top: 0;
+		bottom: 0;
+		right: 0;
+		width: 32px;
+		border-left: 1px solid var(--color-hairline-strong);
+	}
+
+	.ruler-tick {
+		position: absolute;
+		background-color: var(--color-hairline-strong);
+	}
+	.ruler-tick--h {
+		top: 50%;
+		width: 1px;
+		transform: translate(-0.5px, -50%);
+	}
+	.ruler-tick--v {
+		left: 50%;
+		height: 1px;
+		transform: translate(-50%, -0.5px);
+	}
+	.ruler-tick--h.ruler-tick--minor {
+		height: 8px;
+	}
+	.ruler-tick--h.ruler-tick--mid {
+		height: 14px;
+	}
+	.ruler-tick--h.ruler-tick--major {
+		height: 22px;
+		background-color: var(--color-ink);
+	}
+	.ruler-tick--v.ruler-tick--minor {
+		width: 8px;
+	}
+	.ruler-tick--v.ruler-tick--mid {
+		width: 14px;
+	}
+	.ruler-tick--v.ruler-tick--major {
+		width: 22px;
+		background-color: var(--color-ink);
+	}
+
+	.ruler-label {
+		position: absolute;
+		font-family: var(--font-mono);
+		font-size: 10px;
+		line-height: 1;
+		color: var(--color-mute);
+		white-space: nowrap;
+	}
+	.ruler-label--h {
+		top: 4px;
+		transform: translateX(3px);
+	}
+	.ruler-label--v {
+		left: 4px;
+		transform: translateY(3px);
+	}
+
+	.ruler-surface {
+		position: absolute;
+		inset: 32px;
+		touch-action: none;
+	}
+
+	.ruler-guides-svg {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		pointer-events: none;
+	}
+	.ruler-guide__line {
+		stroke: var(--color-ink);
+		stroke-width: 1.5;
+		stroke-dasharray: 4 4;
+	}
+	.ruler-guide__label {
+		position: absolute;
+		transform: translate(-50%, -50%);
+		background-color: color-mix(in srgb, var(--color-canvas) 72%, transparent);
+		backdrop-filter: blur(4px);
+		border: 1px solid var(--color-hairline);
+		border-radius: var(--radius-full, 9999px);
+		box-shadow: var(--shadow-level-2);
+		padding: 2px 10px;
+		font-family: var(--font-mono);
+		font-size: 11px;
+		color: var(--color-ink);
+		cursor: pointer;
+		white-space: nowrap;
+	}
+
+	.ruler-empty-hint {
+		position: absolute;
+		inset: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		pointer-events: none;
+		font-family: var(--font-mono);
+		font-size: 12px;
+		color: var(--color-mute);
+	}
+
+	.ruler-card-outline {
+		border: 2px solid var(--color-ink);
+		border-radius: var(--radius-md);
+		background-color: var(--color-canvas-soft-2);
+	}
+}

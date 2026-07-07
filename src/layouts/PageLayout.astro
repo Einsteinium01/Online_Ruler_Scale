@@ -1,0 +1,21 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Nav from '../components/site/Nav.astro';
+import Footer from '../components/site/Footer.astro';
+
+interface Props {
+	title: string;
+	description: string;
+	path?: string;
+}
+
+const { title, description, path } = Astro.props;
+---
+
+<BaseLayout title={title} description={description} path={path}>
+	<Nav />
+	<main class="container-page py-16 md:py-24">
+		<slot />
+	</main>
+	<Footer />
+</BaseLayout>

@@ -1,0 +1,24 @@
+---
+import type { FaqItem } from '../../lib/content/faq';
+
+interface Props {
+	items: FaqItem[];
+}
+const { items } = Astro.props;
+---
+
+<div class="divide-y divide-hairline border-t border-hairline">
+	{
+		items.map((item) => (
+			<details class="group py-5">
+				<summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-body-md font-medium text-ink marker:content-none">
+					{item.q}
+					<span class="shrink-0 text-mute transition-transform group-open:rotate-45" aria-hidden="true">
+						+
+					</span>
+				</summary>
+				<p class="mt-3 text-body-sm text-body">{item.a}</p>
+			</details>
+		))
+	}
+</div>

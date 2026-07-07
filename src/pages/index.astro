@@ -1,11 +1,89 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/site/Nav.astro';
+import Footer from '../components/site/Footer.astro';
+import RulerApp from '../components/ruler/RulerApp.astro';
+import FeatureCard from '../components/marketing/FeatureCard.astro';
+import Faq from '../components/marketing/Faq.astro';
+import { FAQ_ITEMS } from '../lib/content/faq';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const title = 'Free Online Ruler & Screen Ruler Tool';
+const description =
+	'Measure real-world objects on screen with a free, calibrated online ruler. Auto-detect, screen diagonal, or credit-card calibration — accurate mm, cm, and inch measurements, 100% client-side.';
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<BaseLayout title={title} description={description} path="/">
+	<Nav />
+	<RulerApp />
+
+	<main class="container-page py-16 md:py-24">
+		<section class="mx-auto max-w-2xl text-center">
+			<h1 class="text-display-md font-medium tracking-display-sm text-ink md:text-display-lg">
+				An on-screen ruler that's actually the right size
+			</h1>
+			<p class="mt-4 text-body-lg text-body">
+				Most online rulers guess your screen's pixel density and hope for the best. Online Ruler Scale
+				calibrates to your exact display, so an inch on screen is an inch in real life.
+			</p>
+		</section>
+
+		<section id="calibrate" class="mt-24">
+			<h2 class="text-center text-display-sm font-medium text-ink">Three ways to calibrate</h2>
+			<div class="mt-8 grid gap-4 md:grid-cols-3">
+				<FeatureCard
+					title="Auto-Detect Device"
+					description="We fingerprint your screen size and pixel ratio against known devices and suggest a calibration instantly."
+				/>
+				<FeatureCard
+					title="Screen Diagonal"
+					description="Enter your display's diagonal size in inches and we compute pixels-per-inch geometrically."
+				/>
+				<FeatureCard
+					title="Credit Card Calibration"
+					description="Hold up any ID-1 card — a credit card, license, or loyalty card — and match it to an on-screen outline."
+				/>
+			</div>
+		</section>
+
+		<section class="mt-24">
+			<h2 class="text-center text-display-sm font-medium text-ink">Built to be better</h2>
+			<div class="mt-8 grid gap-4 md:grid-cols-2">
+				<FeatureCard
+					title="Free two-point measurement"
+					description="Drag anywhere on the page to measure between any two points — not just from a ruler's zero edge — with a live mm/cm/in/px readout."
+				/>
+				<FeatureCard
+					title="Shareable calibration"
+					description="Copy a calibration link and open it on another device, or send it to a teammate, to skip re-calibrating from scratch."
+				/>
+			</div>
+		</section>
+
+		<section class="mt-24 grid gap-8 border-t border-hairline pt-16 text-center md:grid-cols-3">
+			<div>
+				<p class="font-mono text-caption text-mute uppercase">Privacy</p>
+				<p class="mt-2 text-body-sm text-body">No accounts, no tracking, no analytics.</p>
+			</div>
+			<div>
+				<p class="font-mono text-caption text-mute uppercase">Client-side</p>
+				<p class="mt-2 text-body-sm text-body">Runs entirely in your browser once loaded.</p>
+			</div>
+			<div>
+				<p class="font-mono text-caption text-mute uppercase">Free</p>
+				<p class="mt-2 text-body-sm text-body">No paywalls, no watermarks, no limits.</p>
+			</div>
+		</section>
+
+		<section class="mt-24">
+			<h2 class="text-center text-display-sm font-medium text-ink">Frequently asked questions</h2>
+			<div class="mx-auto mt-8 max-w-2xl">
+				<Faq items={FAQ_ITEMS.slice(0, 4)} />
+			</div>
+			<p class="mt-6 text-center text-body-sm">
+				<a href="/faq/" class="font-medium text-link">See all FAQs →</a>
+			</p>
+		</section>
+	</main>
+
+	<Footer />
+</BaseLayout>

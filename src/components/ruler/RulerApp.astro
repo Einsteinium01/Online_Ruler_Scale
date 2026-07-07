@@ -1,0 +1,247 @@
+---
+---
+
+<section id="ruler" class="relative h-[calc(100dvh-4rem)] w-full overflow-hidden bg-canvas" data-ruler-root>
+	<div class="ruler-edge ruler-edge--top" data-ruler-edge="top"></div>
+	<div class="ruler-edge ruler-edge--bottom" data-ruler-edge="bottom"></div>
+	<div class="ruler-edge ruler-edge--left" data-ruler-edge="left"></div>
+	<div class="ruler-edge ruler-edge--right" data-ruler-edge="right"></div>
+
+	<div class="ruler-surface" data-measure-surface>
+		<svg class="ruler-guides-svg" xmlns="http://www.w3.org/2000/svg" data-guides-svg></svg>
+		<div class="ruler-empty-hint" data-empty-hint>
+			<p>Drag anywhere to measure &middot; press <kbd>C</kbd> to calibrate</p>
+		</div>
+	</div>
+
+	<div class="absolute inset-x-0 bottom-6 z-20 flex justify-center px-4">
+		<div
+			class="flex flex-wrap items-center gap-0.5 rounded-pill border border-hairline bg-canvas/95 p-1 shadow-level-3 backdrop-blur"
+		>
+			<div class="flex items-center gap-0.5 pr-1">
+				<button type="button" data-edge-toggle="top" aria-pressed="true" class="toolbar-btn" title="Top ruler" aria-label="Toggle top ruler">
+					<svg viewBox="0 0 16 16" width="14" height="14" fill="none" aria-hidden="true">
+						<rect x="1.5" y="1.5" width="13" height="13" rx="2" stroke="currentColor" stroke-width="1.3"></rect>
+						<rect x="1.5" y="1.5" width="13" height="3.5" rx="1.5" fill="currentColor"></rect>
+					</svg>
+				</button>
+				<button type="button" data-edge-toggle="left" aria-pressed="true" class="toolbar-btn" title="Left ruler" aria-label="Toggle left ruler">
+					<svg viewBox="0 0 16 16" width="14" height="14" fill="none" aria-hidden="true">
+						<rect x="1.5" y="1.5" width="13" height="13" rx="2" stroke="currentColor" stroke-width="1.3"></rect>
+						<rect x="1.5" y="1.5" width="3.5" height="13" rx="1.5" fill="currentColor"></rect>
+					</svg>
+				</button>
+				<button type="button" data-edge-toggle="right" aria-pressed="false" class="toolbar-btn" title="Right ruler" aria-label="Toggle right ruler">
+					<svg viewBox="0 0 16 16" width="14" height="14" fill="none" aria-hidden="true">
+						<rect x="1.5" y="1.5" width="13" height="13" rx="2" stroke="currentColor" stroke-width="1.3"></rect>
+						<rect x="11" y="1.5" width="3.5" height="13" rx="1.5" fill="currentColor"></rect>
+					</svg>
+				</button>
+				<button type="button" data-edge-toggle="bottom" aria-pressed="false" class="toolbar-btn" title="Bottom ruler" aria-label="Toggle bottom ruler">
+					<svg viewBox="0 0 16 16" width="14" height="14" fill="none" aria-hidden="true">
+						<rect x="1.5" y="1.5" width="13" height="13" rx="2" stroke="currentColor" stroke-width="1.3"></rect>
+						<rect x="1.5" y="11" width="13" height="3.5" rx="1.5" fill="currentColor"></rect>
+					</svg>
+				</button>
+			</div>
+
+			<div class="h-5 w-px bg-hairline"></div>
+
+			<div class="flex items-center gap-0.5 px-1">
+				<button type="button" data-unit="mm" aria-pressed="false" class="toolbar-btn-text">mm</button>
+				<button type="button" data-unit="cm" aria-pressed="true" class="toolbar-btn-text">cm</button>
+				<button type="button" data-unit="in" aria-pressed="false" class="toolbar-btn-text">in</button>
+				<button type="button" data-unit="px" aria-pressed="false" class="toolbar-btn-text">px</button>
+			</div>
+
+			<div class="h-5 w-px bg-hairline"></div>
+
+			<button type="button" data-clear-guides class="toolbar-btn-text" title="Clear guides (G)">Clear</button>
+			<button type="button" data-open-calibration class="toolbar-btn-text font-medium text-link" title="Calibrate (C)">
+				<span data-calibration-status>Calibrate</span>
+			</button>
+			<button type="button" data-fullscreen class="toolbar-btn" title="Fullscreen (F)" aria-label="Toggle fullscreen">
+				<svg viewBox="0 0 16 16" width="14" height="14" fill="none" aria-hidden="true">
+					<path d="M6 2H2v4M10 2h4v4M6 14H2v-4M10 14h4v-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path>
+				</svg>
+			</button>
+
+			<div class="relative">
+				<button type="button" data-shortcuts-toggle class="toolbar-btn" title="Keyboard shortcuts" aria-label="Keyboard shortcuts">?</button>
+				<div
+					data-shortcuts-popover
+					hidden
+					class="absolute bottom-full right-0 mb-2 w-56 rounded-lg border border-hairline bg-canvas p-3 text-body-sm shadow-level-4"
+				>
+					<p class="mb-2 font-medium text-ink">Keyboard shortcuts</p>
+					<ul class="space-y-1 text-mute">
+						<li><kbd>1</kbd>&ndash;<kbd>4</kbd> switch unit</li>
+						<li><kbd>G</kbd> clear guides</li>
+						<li><kbd>F</kbd> fullscreen</li>
+						<li><kbd>C</kbd> calibrate</li>
+						<li><kbd>D</kbd> dark mode</li>
+						<li><kbd>Esc</kbd> close</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div data-calibration-modal hidden class="fixed inset-0 z-50 flex items-center justify-center bg-ink/40 p-4">
+		<div data-modal-panel class="w-full max-w-md rounded-xl border border-hairline bg-canvas shadow-level-5 transition-[max-width]">
+			<div class="flex items-center justify-between border-b border-hairline px-5 py-4">
+				<p class="text-body-md font-medium text-ink">Calibrate your screen</p>
+				<button type="button" data-close-modal class="toolbar-btn" aria-label="Close">
+					<svg viewBox="0 0 16 16" width="14" height="14" fill="none" aria-hidden="true">
+						<path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"></path>
+					</svg>
+				</button>
+			</div>
+
+			<div class="p-5">
+				<div data-step="choose">
+					<p class="mb-4 text-body-sm text-body">
+						Pick a calibration method. This tells the ruler how many pixels equal a real-world inch on your screen.
+					</p>
+					<div class="space-y-2">
+						<button type="button" data-method="auto" class="method-btn">
+							<span class="font-medium text-ink">Auto-Detect Device</span>
+							<span class="block text-body-sm text-mute">Guess from your screen size and pixel ratio</span>
+						</button>
+						<button type="button" data-method="diagonal" class="method-btn">
+							<span class="font-medium text-ink">Screen Diagonal</span>
+							<span class="block text-body-sm text-mute">Enter your display's diagonal size in inches</span>
+						</button>
+						<button type="button" data-method="card" class="method-btn">
+							<span class="font-medium text-ink">Credit Card Calibration</span>
+							<span class="block text-body-sm text-mute">Match a card outline to any real card</span>
+						</button>
+					</div>
+					<div data-calibrated-footer hidden class="mt-4 rounded-lg bg-canvas-soft-2 p-3 text-body-sm">
+						<p data-calibrated-ppi class="mb-2 text-body"></p>
+						<button type="button" data-copy-link class="cursor-pointer font-medium text-link">Copy shareable calibration link</button>
+					</div>
+				</div>
+
+				<div data-step="auto" hidden>
+					<p data-auto-result class="mb-4 text-body-sm text-body">Detecting&hellip;</p>
+					<div class="flex gap-2">
+						<button type="button" data-back class="btn-secondary">Back</button>
+						<button type="button" data-confirm-auto class="btn-primary">Use this calibration</button>
+					</div>
+				</div>
+
+				<div data-step="diagonal" hidden>
+					<label class="mb-2 block text-body-sm text-body" for="diagonal-input">Screen diagonal (inches)</label>
+					<input
+						id="diagonal-input"
+						data-diagonal-input
+						type="number"
+						min="1"
+						step="0.1"
+						placeholder="e.g. 13.3"
+						class="mb-3 w-full rounded-md border border-hairline px-3 py-2 text-body-md"
+					/>
+					<button type="button" data-calc-diagonal class="btn-secondary mb-3">Calculate</button>
+					<p data-diagonal-result class="mb-4 text-body-sm text-body"></p>
+					<div class="flex gap-2">
+						<button type="button" data-back class="btn-secondary">Back</button>
+						<button type="button" data-confirm-diagonal hidden class="btn-primary">Use this calibration</button>
+					</div>
+				</div>
+
+				<div data-step="card" hidden>
+					<p class="mb-3 text-body-sm text-body">
+						Drag the slider until the outline exactly matches the width of any real credit/debit/ID card held up to your screen.
+					</p>
+					<div class="mb-3 flex items-center justify-center overflow-x-auto rounded-lg bg-canvas-soft-2 p-4">
+						<div data-card-outline class="ruler-card-outline shrink-0"></div>
+					</div>
+					<input data-card-slider type="range" min="200" max="700" class="mb-4 w-full" />
+					<div class="flex gap-2">
+						<button type="button" data-back class="btn-secondary">Back</button>
+						<button type="button" data-confirm-card class="btn-primary">Use this calibration</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.toolbar-btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 32px;
+		height: 32px;
+		border-radius: var(--radius-pill);
+		color: var(--color-body);
+		font-size: 14px;
+	}
+	.toolbar-btn:hover {
+		background-color: var(--color-canvas-soft-2);
+		color: var(--color-ink);
+	}
+	.toolbar-btn[aria-pressed='true'] {
+		background-color: var(--color-ink);
+		color: var(--color-on-primary);
+	}
+
+	.toolbar-btn-text {
+		display: inline-flex;
+		align-items: center;
+		height: 32px;
+		padding-inline: 10px;
+		border-radius: var(--radius-pill);
+		font-size: var(--text-body-sm);
+		color: var(--color-body);
+	}
+	.toolbar-btn-text:hover {
+		background-color: var(--color-canvas-soft-2);
+		color: var(--color-ink);
+	}
+	.toolbar-btn-text[aria-pressed='true'] {
+		background-color: var(--color-ink);
+		color: var(--color-on-primary);
+	}
+
+	.method-btn {
+		display: block;
+		width: 100%;
+		text-align: left;
+		border: 1px solid var(--color-hairline);
+		border-radius: var(--radius-md);
+		padding: 12px 14px;
+	}
+	.method-btn:hover {
+		border-color: var(--color-hairline-strong);
+		background-color: var(--color-canvas-soft-2);
+	}
+
+	.btn-primary {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: var(--radius-pill-sm);
+		background-color: var(--color-ink);
+		color: var(--color-on-primary);
+		padding: 8px 16px;
+		font-size: var(--text-body-sm);
+		font-weight: 500;
+	}
+	.btn-secondary {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: var(--radius-pill-sm);
+		border: 1px solid var(--color-hairline);
+		color: var(--color-ink);
+		padding: 8px 16px;
+		font-size: var(--text-body-sm);
+	}
+</style>
+
+<script>
+	import '../../lib/ruler/main';
+</script>

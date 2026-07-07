@@ -1,0 +1,40 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+
+const title = 'About';
+const description = 'Why we built Online Ruler Scale: a calibrated, private, free on-screen ruler.';
+---
+
+<PageLayout title={title} description={description} path="/about/">
+	<div class="mx-auto max-w-2xl">
+		<h1 class="text-display-lg font-medium tracking-display-sm text-ink">About Online Ruler Scale</h1>
+
+		<div class="mt-8 space-y-6 text-body-md text-body">
+			<p>
+				Most "online ruler" tools render tick marks at a fixed, guessed pixel density and call it a day.
+				That works fine as a rough visual reference, but it falls apart the moment you actually need to
+				measure something — a screen full of 96-DPI ticks looks nothing like a real ruler on a high-density
+				laptop display or a phone.
+			</p>
+			<p>
+				Online Ruler Scale starts from a different premise: a ruler is only useful if it's calibrated to
+				<em>your</em> screen. So before you measure anything, you calibrate — using whichever of our three
+				methods is most convenient (Auto-Detect, Screen Diagonal, or Credit Card Calibration) — and every
+				measurement after that reflects real-world units on your actual display.
+			</p>
+			<p>
+				Beyond calibration, we built two things we felt were missing from existing tools: a
+				<strong class="text-ink">free two-point measurement mode</strong>
+				 that lets you drag between any two points on screen (not just from a ruler's zero edge), and
+				<strong class="text-ink">shareable calibration links</strong>
+				 so you can carry a calibration to another device, or share it with a teammate, without repeating
+				the whole process.
+			</p>
+			<p>
+				The entire tool runs client-side in your browser. We don't have accounts, we don't track usage, and
+				we don't send your measurements anywhere — there's simply no server involved once the page has
+				loaded. See our <a href="/privacy/" class="font-medium text-link">privacy page</a> for details.
+			</p>
+		</div>
+	</div>
+</PageLayout>
