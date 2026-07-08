@@ -6,7 +6,6 @@ export interface KeyboardActions {
 	openCalibration(): void;
 	clearGuides(): void;
 	closeModal(): void;
-	toggleTheme(): void;
 }
 
 const UNIT_KEYS: Record<string, Unit> = { '1': 'mm', '2': 'cm', '3': 'in', '4': 'px' };
@@ -38,10 +37,6 @@ export function initKeyboard(actions: KeyboardActions): void {
 			case 'g':
 			case 'G':
 				actions.clearGuides();
-				break;
-			case 'd':
-			case 'D':
-				actions.toggleTheme();
 				break;
 			case 'Escape':
 				actions.closeModal();

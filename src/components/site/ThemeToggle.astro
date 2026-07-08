@@ -48,4 +48,17 @@
 
 	const button = document.querySelector<HTMLButtonElement>('[data-theme-toggle]');
 	button?.addEventListener('click', () => toggleTheme());
+
+	function isTypingTarget(target: EventTarget | null): boolean {
+		const el = target as HTMLElement | null;
+		return !!el && (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.isContentEditable);
+	}
+
+	// "d" toggles dark mode on every page (ThemeToggle renders sitewide via Nav).
+	window.addEventListener('keydown', (e) => {
+		if (e.key !== 'd' && e.key !== 'D') return;
+		if (e.metaKey || e.ctrlKey || e.altKey) return;
+		if (isTypingTarget(e.target)) return;
+		toggleTheme();
+	});
 </script>

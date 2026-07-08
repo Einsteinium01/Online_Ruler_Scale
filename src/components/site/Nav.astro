@@ -26,8 +26,8 @@ const current = Astro.url.pathname;
 				<a
 					href={link.href}
 					class:list={[
-						'rounded-full px-3 py-2 text-body-sm text-body transition-colors hover:bg-canvas-soft hover:text-ink',
-						current === link.href && 'bg-canvas-soft text-ink',
+						'rounded-full border border-hairline px-3 py-1.5 text-body-sm text-body transition-colors hover:border-ink hover:bg-canvas-soft hover:text-ink',
+						current === link.href && 'border-ink bg-canvas-soft text-ink',
 					]}
 				>
 					{link.label}

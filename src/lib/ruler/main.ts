@@ -10,7 +10,6 @@ import { readCalibrationFromURL, calibrationLink } from './share';
 import { initKeyboard } from './keyboard';
 import { toggleFullscreen } from './fullscreen';
 import { initMeasure } from './measure';
-import { toggleTheme } from '../theme';
 
 const EDGES: Edge[] = ['top', 'bottom', 'left', 'right'];
 
@@ -99,7 +98,6 @@ function init(): void {
 			closeModal();
 			shortcutsPopover?.setAttribute('hidden', '');
 		},
-		toggleTheme: () => toggleTheme(),
 	};
 
 	if (surface && svg) {
