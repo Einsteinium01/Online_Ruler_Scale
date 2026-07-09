@@ -1,4 +1,4 @@
-## Online Ruler Scale — onlinerulerscale.com
+## Online Ruler Scale — https://onlinerulerscale.netlify.app/
 
 *Personal project · Astro, TypeScript, Tailwind CSS 4*
 
