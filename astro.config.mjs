@@ -5,7 +5,8 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://onlinerulerscale.com',
+	site: 'https://Einsteinium01.github.io',
+	base: '/Online_Ruler_Scale',
 	integrations: [sitemap()],
 	devToolbar: {
 		enabled: false,
