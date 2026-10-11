@@ -4,6 +4,7 @@ dist/
 # generated types
 .astro/
 .claude
+.agents
 
 # dependencies
 node_modules/
