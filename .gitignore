@@ -5,6 +5,7 @@ dist/
 .astro/
 .claude
 .agents
+brag-output/
 
 # dependencies
 node_modules/
