@@ -29,45 +29,38 @@ Most "online rulers" on the web render tick marks assuming a standard **96 CSS p
 
 ---
 
-## 📸 Screenshots & Walkthrough
+## 📸 Screenshots
 
-### 1. Interactive Two-Point Measurement
-Drag anywhere across the screen to measure distances freely. Real-time floating readout updates millimeters, centimeters, inches, and screen pixels simultaneously.
-
-<p align="center">
-  <img src="./screenshots/ss1.png" alt="Interactive Two-Point Measurement" width="100%" />
-</p>
-
----
-
-### 2. Three Screen Calibration Methods
-Accuracy doesn't rely on browser guesswork. Choose the calibration method that suits your setup best.
-
-<p align="center">
-  <img src="./screenshots/ss2.png" alt="Calibration Methods Modal" width="600" />
-</p>
-
-- **Auto-Detect Device**: Fast heuristic estimation based on device screen metrics and device pixel ratio.
-- **Screen Diagonal**: Enter your physical monitor's diagonal size in inches (e.g. `14"`, `15.6"`, `24"`, `27"`).
-- **Credit Card Calibration**: Match an on-screen outline against any standard wallet card (standard ISO/IEC 7810 ID-1: `85.60 mm × 53.98 mm`).
-
----
-
-### 3. Quick-Action Floating Toolbar & Shortcuts
-Instant access to orientation switching, unit toggling, guide clearing, calibration, and full keyboard navigation.
-
-<p align="center">
-  <img src="./screenshots/ss3.png" alt="Keyboard Shortcuts and Floating Toolbar" width="600" />
-</p>
-
----
-
-### 4. Built-in FAQ & Documentation
-Clear answers on measurement accuracy, calibration science, device compatibility, and privacy guarantees.
-
-<p align="center">
-  <img src="./screenshots/ss4.png" alt="FAQ and Guide Section" width="100%" />
-</p>
+<table>
+  <tr>
+    <td width="50%" align="center">
+      <img src="./screenshots/ss1.png" alt="Interactive Two-Point Measurement" width="100%" />
+      <br />
+      <strong>1. Interactive Two-Point Measurement</strong><br />
+      <sub>Free drag-to-measure across screen with live multi-unit readout</sub>
+    </td>
+    <td width="50%" align="center">
+      <img src="./screenshots/ss2.png" alt="Calibration Methods Modal" width="100%" />
+      <br />
+      <strong>2. Three Screen Calibration Methods</strong><br />
+      <sub>Auto-detect, screen diagonal, & physical card alignment</sub>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center">
+      <img src="./screenshots/ss3.png" alt="Keyboard Shortcuts and Floating Toolbar" width="100%" />
+      <br />
+      <strong>3. Floating Toolbar & Shortcuts</strong><br />
+      <sub>Quick unit switching, guide controls, & keyboard navigation</sub>
+    </td>
+    <td width="50%" align="center">
+      <img src="./screenshots/ss4.png" alt="FAQ and Guide Section" width="100%" />
+      <br />
+      <strong>4. FAQ & Documentation</strong><br />
+      <sub>Comprehensive guide covering accuracy, units, and privacy</sub>
+    </td>
+  </tr>
+</table>
 
 ---
 
