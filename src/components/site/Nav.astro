@@ -1,10 +1,11 @@
 ---
 import ThemeToggle from './ThemeToggle.astro';
+import LanguagePicker from './LanguagePicker.astro';
 
 const links = [
-	{ href: '/about/', label: 'About' },
-	{ href: '/faq/', label: 'FAQ' },
-	{ href: '/privacy/', label: 'Privacy' },
+	{ href: '/about/', label: 'About', i18nKey: 'nav_about' },
+	{ href: '/faq/', label: 'FAQ', i18nKey: 'nav_faq' },
+	{ href: '/privacy/', label: 'Privacy', i18nKey: 'nav_privacy' },
 ];
 const current = Astro.url.pathname;
 ---
@@ -29,6 +30,7 @@ const current = Astro.url.pathname;
 						'rounded-full border border-hairline px-3 py-1.5 text-body-sm text-body transition-colors hover:border-ink hover:bg-canvas-soft hover:text-ink',
 						current === link.href && 'border-ink bg-canvas-soft text-ink',
 					]}
+					data-i18n={link.i18nKey}
 				>
 					{link.label}
 				</a>
@@ -37,10 +39,12 @@ const current = Astro.url.pathname;
 	</nav>
 
 	<div class="flex items-center gap-2">
+		<LanguagePicker />
 		<ThemeToggle />
 		<a
 			href="/#ruler"
 			class="rounded-sm bg-ink px-3 py-1 text-body-sm font-medium text-on-primary transition-opacity hover:opacity-85"
+			data-i18n="nav_openRuler"
 		>
 			Open Ruler
 		</a>

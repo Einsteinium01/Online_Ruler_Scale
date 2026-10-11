@@ -10,7 +10,7 @@
 	<div class="ruler-surface" data-measure-surface>
 		<svg class="ruler-guides-svg" xmlns="http://www.w3.org/2000/svg" data-guides-svg></svg>
 		<div class="ruler-empty-hint" data-empty-hint>
-			<p>Drag anywhere to measure &middot; press <kbd>C</kbd> to calibrate</p>
+			<p data-i18n="ruler_dragHint">Drag anywhere to measure · press <kbd>C</kbd> to calibrate</p>
 		</div>
 	</div>
 
@@ -56,9 +56,9 @@
 
 			<div class="h-5 w-px bg-hairline"></div>
 
-			<button type="button" data-clear-guides class="toolbar-btn-text" title="Clear guides (G)">Clear</button>
+			<button type="button" data-clear-guides class="toolbar-btn-text" title="Clear guides (G)" data-i18n="ruler_clear">Clear</button>
 			<button type="button" data-open-calibration class="toolbar-btn-text font-medium text-link" title="Calibrate (C)">
-				<span data-calibration-status>Calibrate</span>
+				<span data-calibration-status data-i18n="ruler_calibrate">Calibrate</span>
 			</button>
 			<button type="button" data-fullscreen class="toolbar-btn" title="Fullscreen (F)" aria-label="Toggle fullscreen">
 				<svg viewBox="0 0 16 16" width="14" height="14" fill="none" aria-hidden="true">
@@ -73,14 +73,14 @@
 					hidden
 					class="absolute bottom-full right-0 mb-2 w-56 rounded-lg border border-hairline bg-canvas p-3 text-body-sm shadow-level-4"
 				>
-					<p class="mb-2 font-medium text-ink">Keyboard shortcuts</p>
+					<p class="mb-2 font-medium text-ink" data-i18n="shortcuts_title">Keyboard shortcuts</p>
 					<ul class="space-y-1 text-mute">
-						<li><kbd>1</kbd>&ndash;<kbd>4</kbd> switch unit</li>
-						<li><kbd>G</kbd> clear guides</li>
-						<li><kbd>F</kbd> fullscreen</li>
-						<li><kbd>C</kbd> calibrate</li>
-						<li><kbd>D</kbd> dark mode</li>
-						<li><kbd>Esc</kbd> close</li>
+						<li data-i18n="shortcut_unit"><kbd>1</kbd>&ndash;<kbd>4</kbd> switch unit</li>
+						<li data-i18n="shortcut_guides"><kbd>G</kbd> clear guides</li>
+						<li data-i18n="shortcut_fullscreen"><kbd>F</kbd> fullscreen</li>
+						<li data-i18n="shortcut_calibrate"><kbd>C</kbd> calibrate</li>
+						<li data-i18n="shortcut_dark"><kbd>D</kbd> dark mode</li>
+						<li data-i18n="shortcut_close"><kbd>Esc</kbd> close</li>
 					</ul>
 				</div>
 			</div>
@@ -90,7 +90,7 @@
 	<div data-calibration-modal hidden class="fixed inset-0 z-50 flex items-center justify-center bg-ink/40 p-4">
 		<div data-modal-panel class="w-full max-w-md rounded-xl border border-hairline bg-canvas shadow-level-5 transition-[max-width]">
 			<div class="flex items-center justify-between border-b border-hairline px-5 py-4">
-				<p class="text-body-md font-medium text-ink">Calibrate your screen</p>
+				<p class="text-body-md font-medium text-ink" data-i18n="cal_title">Calibrate your screen</p>
 				<button type="button" data-close-modal class="toolbar-btn" aria-label="Close">
 					<svg viewBox="0 0 16 16" width="14" height="14" fill="none" aria-hidden="true">
 						<path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"></path>
@@ -100,39 +100,39 @@
 
 			<div class="p-5">
 				<div data-step="choose">
-					<p class="mb-4 text-body-sm text-body">
+					<p class="mb-4 text-body-sm text-body" data-i18n="cal_intro">
 						Pick a calibration method. This tells the ruler how many pixels equal a real-world inch on your screen.
 					</p>
 					<div class="space-y-2">
 						<button type="button" data-method="auto" class="method-btn">
-							<span class="font-medium text-ink">Auto-Detect Device</span>
-							<span class="block text-body-sm text-mute">Guess from your screen size and pixel ratio</span>
+							<span class="font-medium text-ink" data-i18n="cal_auto">Auto-Detect Device</span>
+							<span class="block text-body-sm text-mute" data-i18n="cal_auto_desc">Guess from your screen size and pixel ratio</span>
 						</button>
 						<button type="button" data-method="diagonal" class="method-btn">
-							<span class="font-medium text-ink">Screen Diagonal</span>
-							<span class="block text-body-sm text-mute">Enter your display's diagonal size in inches</span>
+							<span class="font-medium text-ink" data-i18n="cal_diagonal">Screen Diagonal</span>
+							<span class="block text-body-sm text-mute" data-i18n="cal_diagonal_desc">Enter your display's diagonal size in inches</span>
 						</button>
 						<button type="button" data-method="card" class="method-btn">
-							<span class="font-medium text-ink">Credit Card Calibration</span>
-							<span class="block text-body-sm text-mute">Match a card outline to any real card</span>
+							<span class="font-medium text-ink" data-i18n="cal_card">Credit Card Calibration</span>
+							<span class="block text-body-sm text-mute" data-i18n="cal_card_desc">Match a card outline to any real card</span>
 						</button>
 					</div>
 					<div data-calibrated-footer hidden class="mt-4 rounded-lg bg-canvas-soft-2 p-3 text-body-sm">
 						<p data-calibrated-ppi class="mb-2 text-body"></p>
-						<button type="button" data-copy-link class="cursor-pointer font-medium text-link">Copy shareable calibration link</button>
+						<button type="button" data-copy-link class="cursor-pointer font-medium text-link" data-i18n="cal_copy_link">Copy shareable calibration link</button>
 					</div>
 				</div>
 
 				<div data-step="auto" hidden>
-					<p data-auto-result class="mb-4 text-body-sm text-body">Detecting&hellip;</p>
+					<p data-auto-result class="mb-4 text-body-sm text-body" data-i18n="cal_detecting">Detecting&hellip;</p>
 					<div class="flex gap-2">
-						<button type="button" data-back class="btn-secondary">Back</button>
-						<button type="button" data-confirm-auto class="btn-primary">Use this calibration</button>
+						<button type="button" data-back class="btn-secondary" data-i18n="cal_back">Back</button>
+						<button type="button" data-confirm-auto class="btn-primary" data-i18n="cal_use">Use this calibration</button>
 					</div>
 				</div>
 
 				<div data-step="diagonal" hidden>
-					<label class="mb-2 block text-body-sm text-body" for="diagonal-input">Screen diagonal (inches)</label>
+					<label class="mb-2 block text-body-sm text-body" for="diagonal-input" data-i18n="cal_diagonal_label">Screen diagonal (inches)</label>
 					<input
 						id="diagonal-input"
 						data-diagonal-input
@@ -140,18 +140,19 @@
 						min="1"
 						step="0.1"
 						placeholder="e.g. 13.3"
+						data-i18n-placeholder="cal_diagonal_placeholder"
 						class="mb-3 w-full rounded-md border border-hairline px-3 py-2 text-body-md"
 					/>
-					<button type="button" data-calc-diagonal class="btn-secondary mb-3">Calculate</button>
+					<button type="button" data-calc-diagonal class="btn-secondary mb-3" data-i18n="cal_calculate">Calculate</button>
 					<p data-diagonal-result class="mb-4 text-body-sm text-body"></p>
 					<div class="flex gap-2">
-						<button type="button" data-back class="btn-secondary">Back</button>
-						<button type="button" data-confirm-diagonal hidden class="btn-primary">Use this calibration</button>
+						<button type="button" data-back class="btn-secondary" data-i18n="cal_back">Back</button>
+						<button type="button" data-confirm-diagonal hidden class="btn-primary" data-i18n="cal_use">Use this calibration</button>
 					</div>
 				</div>
 
 				<div data-step="card" hidden>
-					<p class="mb-3 text-body-sm text-body">
+					<p class="mb-3 text-body-sm text-body" data-i18n="cal_card_drag">
 						Drag the slider until the outline exactly matches the width of any real credit/debit/ID card held up to your screen.
 					</p>
 					<div class="mb-3 flex items-center justify-center overflow-x-auto rounded-lg bg-canvas-soft-2 p-4">
@@ -159,8 +160,8 @@
 					</div>
 					<input data-card-slider type="range" min="200" max="700" class="mb-4 w-full" />
 					<div class="flex gap-2">
-						<button type="button" data-back class="btn-secondary">Back</button>
-						<button type="button" data-confirm-card class="btn-primary">Use this calibration</button>
+						<button type="button" data-back class="btn-secondary" data-i18n="cal_back">Back</button>
+						<button type="button" data-confirm-card class="btn-primary" data-i18n="cal_use">Use this calibration</button>
 					</div>
 				</div>
 			</div>
