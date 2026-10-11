@@ -6,7 +6,6 @@ dist/
 .claude
 .agents
 brag-output/
-screenshots/
 
 # dependencies
 node_modules/
